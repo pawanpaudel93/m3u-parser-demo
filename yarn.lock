@@ -233,10 +233,10 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@pawanpaudel93/m3u-parser@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.npmjs.org/@pawanpaudel93/m3u-parser/-/m3u-parser-1.1.0.tgz#f6d514eb1d76becf7d12537f6d3e5d49a6e0c5ef"
-  integrity sha512-yZzHSzI9pl1ndvm86KV66BZZ5nX9z6TwPORaDj61T4aiRGBk7piO3ey5YyHDtcdDu0d35VHkDNIvfYgVucv2tQ==
+"@pawanpaudel93/m3u-parser@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.npmjs.org/@pawanpaudel93/m3u-parser/-/m3u-parser-1.1.1.tgz#0144e94e0fd86a7ccfe6abdfb847d14bcdfdbc76"
+  integrity sha512-GhygCeFoRTienXjmcXY6k0/yNrZPbhZ2Zcdow27WAg72AkngtWImtEKrgz7INU4Vehg4CbREGFhpB4oZ4gNK+A==
   dependencies:
     axios "^1.4.0"
     axios-retry "^3.5.0"
