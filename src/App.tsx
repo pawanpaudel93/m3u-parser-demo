@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useDropzone } from "react-dropzone";
-import { M3uParser } from "@pawanpaudel93/m3u-parser";
+import { M3uParser, StreamInfo } from "@pawanpaudel93/m3u-parser";
 import ReactJson from "react-json-view";
 
 const App = () => {
-  const [renderedJSON, setRenderedJSON] = useState({});
+  const [renderedJSON, setRenderedJSON] = useState<StreamInfo[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [fileName, setFileName] = useState("");
   const [format, setFormat] = useState("m3u");
@@ -55,10 +55,14 @@ const App = () => {
       const file = acceptedFiles[0];
       setFileName(file.name.split(".").slice(0, -1).join("."));
       await parser.parseM3u(file);
-      setRenderedJSON(parser.getStreamsInfo());
+      updateJSON();
       setIsLoading(false);
     },
   });
+
+  function updateJSON() {
+    setRenderedJSON([...parser.getStreamsInfo()]);
+  }
 
   async function download() {
     await parser.saveToFile(fileName, format);
@@ -74,7 +78,7 @@ const App = () => {
       nestedKey === "true",
       "-"
     );
-    setRenderedJSON(parser.getStreamsInfo());
+    updateJSON();
     setIsLoading(false);
   }
 
@@ -82,14 +86,14 @@ const App = () => {
     setIsLoading(true);
     const { key, nestedKey, asc } = sortOption;
     parser.sortBy(key, asc === "true", nestedKey === "true", "-");
-    setRenderedJSON(parser.getStreamsInfo());
+    updateJSON();
     setIsLoading(false);
   }
 
   async function resetOperations() {
     setIsLoading(true);
     parser.resetOperations();
-    setRenderedJSON(parser.getStreamsInfo());
+    updateJSON();
     setIsLoading(false);
   }
 
@@ -235,7 +239,7 @@ const App = () => {
               <button
                 className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-1 px-3 rounded"
                 onClick={() => {
-                  setRenderedJSON({});
+                  setRenderedJSON([]);
                 }}
               >
                 Clear
