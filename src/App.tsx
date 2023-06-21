@@ -103,16 +103,18 @@ const App = () => {
         <div
           {...getRootProps({
             className:
-              "dropzone border-2 border-dashed border-gray-400 rounded-md p-5 text-center cursor-pointer",
+              "dropzone border-2 border-dashed border-gray-400 rounded-md p-5 text-center cursor-pointer h-40 flex justify-center items-center",
           })}
         >
-          <input {...getInputProps()} />
-          <p className="text-lg text-black">
-            Drag 'n' drop an .m3u file here, or click to select a file
-          </p>
-          <em className="text-sm text-black">
-            (Only *.m3u file will be accepted)
-          </em>
+          <div>
+            <input {...getInputProps()} />
+            <p className="text-lg text-black">
+              Drag 'n' drop an .m3u file here, or click to select a file
+            </p>
+            <em className="text-sm text-black">
+              (Only *.m3u file will be accepted)
+            </em>
+          </div>
         </div>
         {isLoading && (
           <div className="flex justify-center items-center mt-4">
